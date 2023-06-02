@@ -7,7 +7,7 @@ print(data[2:])
 print(data[:4])
 print(len(data))"""
 #data[0]='android'
-print(data)
+
 
 """if 'java' in data:
     print("Yes...")
@@ -25,8 +25,8 @@ for i in data:
     print(f"{i}={n}")
     n+=1"""
 
-data.append('angular')
-data.insert(2,'iOS')
+#data.append('angular')
+#data.insert(2,'iOS')
 #data.pop()
 #data.pop(2)
 #data.remove('c++')
@@ -44,5 +44,12 @@ data.insert(2,'iOS')
 #print(data)
 
 
-newlist=data.copy()
-print(newlist)
+#newlist=data.copy()
+#print(newlist)
+
+# ------------------------------------ #
+print(data)
+
+newlist=("HTML5","CSS3","JS")
+data.extend(newlist)
+print(data)
