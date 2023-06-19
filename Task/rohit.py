@@ -16,3 +16,13 @@ for i in range(n):
         st_data1[key1]=st_data2.copy()
 
 print(st_data1)
+#print(st_data1["st1"])
+
+st=input("Enter your main key:")
+
+
+if st_data1[st]:
+    print(st_data1.get(st))
+    st_data1["id"]=102
+    st_data1["name"]="Ashok"
+
