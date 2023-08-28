@@ -8,3 +8,6 @@ class signup(models.Model):
     dob=models.DateField()
     mobile=models.BigIntegerField()
     address=models.TextField()
+
+    """def __str__(self) -> str:
+        return self.name"""
