@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alldata</title>
+</head>
+<body bgcolor="gold">
+    <center><h1>Welcome to Database Project</h1></center>
+    <hr>
+    <center><h2><u>All Data</u></h2></center>
+    <!-- {{data}} -->
+    <!-- {% for i in data %}
+    {{i.name}}
+    {{i.email}}
+    {{i.dob}}
+    {{i.address}}
+    {% endfor %} -->
+
+    <table border="2">
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Mobile</td>
+            <td>Address</td>
+            <td>Action</td>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{i.id}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.mobile}}</td>
+            <td>{{i.address}}</td>
+            <td><a href="">Update</a>
+            <a href="">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

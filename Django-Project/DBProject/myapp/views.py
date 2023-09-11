@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .forms import signupform
+from .models import signup
 
 # Create your views here.
 def index(request):
@@ -11,3 +12,7 @@ def index(request):
         else:
             print(newuser.errors)
     return render(request,'index.html')
+
+def alldata(request):
+    data=signup.objects.all()
+    return render(request,'alldata.html',{'data':data})
