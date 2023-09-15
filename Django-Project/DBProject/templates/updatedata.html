@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update data</title>
+</head>
+<body bgcolor="gold">
+    <center><h1>Welcome to Database Project</h1></center>
+    <hr>
+    <center><h2><u>Update Profile</u></h2></center>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" value="{{cid.name}}" name="name" placeholder="Name"><br><br>
+        <input type="email" value="{{cid.email}}" name="email" placeholder="Email"><br><br>
+        <input type="password" value="{{cid.password}}" name="password" placeholder="Password"><br><br>
+        <input type="date" value="{{cid.dob|date:'Y-m-d'}}" name="dob"><br><br>
+        <input type="number" value="{{cid.mobile}}" name="mobile" placeholder="Mobile"><br><br>
+        <textarea placeholder="Address" name="address" hidden></textarea><br><br>
+        <input type="submit" value="Update">
+        <input type="reset">
+    </form>
+    <hr>
+    <center><a href="/alldata">Show All Data</a></center>
+</body>
+</html>
