@@ -15,7 +15,7 @@
 <body style="background-color: rgb(176, 202, 202);">
     <center>
         <h1 style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;color: rgb(24, 25, 21);">
-            Welcome to Home</h1>
+            Welcome, {{user}}</h1>
     </center>
     <hr>
     <!-- <form>
@@ -23,8 +23,14 @@
         <input type="password" placeholder="Password"><br><br>
         <input type="submit" value="Login">
     </form> -->
+    <center>
+        {% if user is none %}
+        <button type="submit" class="btn btn-warning">Login</button>
+        {% else %}
+        <a class="btn btn-danger" href="/userlogout">Logout</a>
+        {% endif %}
+    </center>
 
-   
 </body>
 
 </html>
