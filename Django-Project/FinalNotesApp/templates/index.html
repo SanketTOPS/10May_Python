@@ -59,6 +59,32 @@
     </nav>
     <!-- Navbar End -->
 
+    <!-- Image Slider Start -->
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/static/imgs/sl1.jpg" height="500" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/imgs/sl2.jpg" height="500" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="/static/imgs/sl3.jpg" height="500" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <!-- Image Slider End -->
+
     <!-- MSG Start -->
     <!-- {% if messages %}
     {% for msg in messages %}
@@ -71,7 +97,7 @@
     <!-- MSG Start -->
 
     <!-- MSG Status Check Start -->
-    {% if status is True %}
+    <!-- {% if status is True %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Holy!</strong> Signup Successfully!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -80,8 +106,8 @@
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Error!</strong> Something went wrong...Try again!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    {% endif %}
+    </div>
+    {% endif %} -->
     <!-- MSG Status Check End -->
 
     <!-- Login Modal Start -->
@@ -93,23 +119,24 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form method="post">
+                        {% csrf_token %}
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Username</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
+                            <input type="email" name="username" class="form-control" id="exampleInputEmail1"
                                 aria-describedby="emailHelp">
                             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1">
+                            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="exampleCheck1">
                             <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="submit" name="signin" value="signin" class="btn btn-primary">Login</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -204,7 +231,7 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <button class="btn btn-primary" type="submit">Signup</button>
+                            <button class="btn btn-primary" name="signup" value="signup" type="submit">Signup</button>
                         </div>
                     </form>
                 </div>
