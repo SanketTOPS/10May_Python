@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from.forms import *
 from .models import *
 from django.contrib import messages
+from django.contrib.auth import logout
 
 # Create your views here.
 
@@ -27,9 +28,12 @@ def index(request):
             pas=request.POST['password']
 
             user=userSignup.objects.filter(username=unm,password=pas)
+            userid=userSignup.objects.get(username=unm)
+            print("UserID:",userid.id)
             if user:
                 print("Login Successfully!")
                 request.session['user']=unm
+                request.session['userid']=userid.id
                 return redirect('notes')
             else:
                 print("Error!Login fail...try again!")
@@ -40,10 +44,17 @@ def notes(request):
     return render(request,'notes.html',{'user':user})
 
 def profile(request):
-    return render(request,'profile.html')
+    user=request.session.get('user')
+    userid=request.session.get('userid')
+    cuser=userSignup.objects.get(id=userid)
+    return render(request,'profile.html',{'user':user,'userid':cuser})
 
 def about(request):
     return render(request,'about.html')
 
 def contact(request):
     return render(request,'contact.html')
+
+def userlogout(request):
+    logout(request)
+    return redirect("/")
