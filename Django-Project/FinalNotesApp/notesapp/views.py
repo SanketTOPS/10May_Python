@@ -3,6 +3,7 @@ from.forms import *
 from .models import *
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -39,14 +40,30 @@ def index(request):
                 print("Error!Login fail...try again!")
     return render(request,'index.html')
 
+
 def notes(request):
     user=request.session.get('user')
+    if request.method=='POST':
+        newnotes=notesForm(request.POST,request.FILES)
+        if newnotes.is_valid():
+            newnotes.save()
+            print("Your notes has been submitted!")
+        else:
+            print(newnotes.errors)
     return render(request,'notes.html',{'user':user})
 
 def profile(request):
     user=request.session.get('user')
     userid=request.session.get('userid')
     cuser=userSignup.objects.get(id=userid)
+    if request.method=='POST':
+        updateuser=updateForm(request.POST)
+        if updateuser.is_valid():
+            updateuser=updateForm(request.POST,instance=cuser)
+            updateuser.save()
+            print("Your profile has been updated!")
+        else:
+            print("Error!Something went wrong...")
     return render(request,'profile.html',{'user':user,'userid':cuser})
 
 def about(request):
