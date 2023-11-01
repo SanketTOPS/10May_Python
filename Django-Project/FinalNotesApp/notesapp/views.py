@@ -4,6 +4,8 @@ from .models import *
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from FinalNotesApp import settings
 
 # Create your views here.
 
@@ -70,6 +72,17 @@ def about(request):
     return render(request,'about.html')
 
 def contact(request):
+    if request.method=='POST':
+        newfeedback=feedbackForm(request.POST)
+        if newfeedback.is_valid():
+            newfeedback.save()
+            print("Your FEEDBACK has been submitted!")
+
+            #Email Send
+            send_mail(subject="Thank you!",message=f"Dear User\n\nThanks for connecting with us!\nIf you have any queries regarding service, Please contact on\n\n+919724799469 | sanket.tops@gmail.com | www.tops-int.com",from_email=settings.EMAIL_HOST_USER,recipient_list=[request.POST['email']])
+
+        else:
+            print(newfeedback.errors)
     return render(request,'contact.html')
 
 def userlogout(request):

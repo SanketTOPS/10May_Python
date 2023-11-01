@@ -18,3 +18,10 @@ class notes(models.Model):
     option=models.CharField(max_length=100)
     file=models.FileField(upload_to='MyNotes')
     comment=models.TextField()
+
+class feedback(models.Model):
+    created=models.DateTimeField(auto_now_add=True)
+    name=models.CharField(max_length=100)
+    email=models.EmailField()
+    phone=models.BigIntegerField()
+    msg=models.TextField()

@@ -17,3 +17,8 @@ class notesForm(forms.ModelForm):
     class Meta:
         model=notes
         fields='__all__'
+
+class feedbackForm(forms.ModelForm):
+    class Meta:
+        model=feedback
+        fields='__all__'
