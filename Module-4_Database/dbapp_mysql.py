@@ -46,7 +46,7 @@ except Exception as e:
 
 
 # Show Data
-show_data="select * from studinfo"
+"""show_data="select * from studinfo"
 try:
     cr.execute(show_data)
     data=cr.fetchall()
@@ -56,5 +56,15 @@ try:
 
     for i in data:
         print(i[1])
+except Exception as e:
+    print(e)"""
+
+
+# Alter 
+alter_tbl="alter table studinfo add column city text"
+try:
+    cr.execute(alter_tbl)
+    dbcon.commit()
+    print("Column added")
 except Exception as e:
     print(e)
